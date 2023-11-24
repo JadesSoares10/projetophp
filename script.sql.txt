@@ -1,0 +1,23 @@
+CREATE DATABASE sistema_academico;
+
+USE sistema_academico;
+
+CREATE TABLE aluno (
+	id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nome VARCHAR(100) NOT NULL,
+	matricula VARCHAR(100) NOT NULL,
+	primeira_nota VARCHAR(100) NOT NULL,
+	segunda_nota VARCHAR(100) NOT NULL,
+	media VARCHAR(100)
+);
+
+ALTER TABLE aluno ADD INDEX idx_matricula (matricula);
+
+CREATE TABLE login (
+    id INT PRIMARY KEY,
+    senha VARCHAR(255),
+    matricula VARCHAR(100),
+    FOREIGN KEY (matricula) REFERENCES aluno (matricula)
+);
+
+INSERT INTO login (id, senha, matricula) VALUES (1, '123456', '19988');
